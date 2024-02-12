@@ -360,6 +360,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         frmUsuarios mUsuario = new frmUsuarios();
         mUsuario.setVisible(true);
         desktop.add(mUsuario);
+        //teste de atualização
     }//GEN-LAST:event_mnuArquivoCUsuariosActionPerformed
 
     private void mnuArquivoConfiguracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoConfiguracoesActionPerformed
