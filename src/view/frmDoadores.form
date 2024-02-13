@@ -289,7 +289,7 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="ADICIONAR NOVO USUARIO"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>
@@ -307,7 +307,7 @@
             <Property name="text" type="java.lang.String" value="ADICIONAR"/>
             <Property name="toolTipText" type="java.lang.String" value="ADICIONAR NOVO CLIENTE"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>
@@ -319,7 +319,7 @@
             <Property name="text" type="java.lang.String" value="EXCLUIR"/>
             <Property name="toolTipText" type="java.lang.String" value="EXCLUIR CLIENTE"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>
@@ -331,7 +331,7 @@
             <Property name="text" type="java.lang.String" value="ALTERAR"/>
             <Property name="toolTipText" type="java.lang.String" value="ALTERA INFO DO CLIENTE"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>

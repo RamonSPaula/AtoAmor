@@ -9,23 +9,24 @@ import conexxao_BD.ModuloConexao;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 //iimportando recursos da biblioteca rs2xml.jar
 //import net.proteanit.sql.DbUtils;
 
-public class frmCliente extends javax.swing.JInternalFrame {
+public class frmDoadores extends javax.swing.JInternalFrame {
 
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public frmCliente() {
+    public frmDoadores() {
         initComponents();
         conexao = ModuloConexao.conector();
     }
 
-    //METODO PARA ADICIONAR CLIENTES
+    //METODO PARA ADICIONAR DOADORES
     private void adicionar() {
-        String sql = "insert into tbl_doa(NOME_CLIENTE,END_CLIENTE, FONE_CLIENTE, EMAIL_CLIENTE) values(?,?,?,?)";
+        String sql = "insert into tbl_doa(NOME_DOA,END_DOA,FONE_DOA,EMAIL_DOA) values(?,?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtCliNome.getText());
@@ -45,7 +46,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
                 //APOIO PARA VERIFICAR MINHA LOGICA
                 //System.out.println("ADICIONADO");
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Doador adicionado com sucesso!");
                     limpar();
 
                     txtCliNome.requestFocusInWindow();
@@ -57,19 +58,19 @@ public class frmCliente extends javax.swing.JInternalFrame {
         }
     }
 
-    //metodo para pesquisar clientes
-    private void pesquisar_clientes() {
-//        String sql = "select ID_CLIENTES as ID, NOME_CLIENTE as NOME, END_CLIENTE as ENDEREÇO, FONE_CLIENTE as TELEFONE, EMAIL_CLIENTE as EMAIL from tbl_doa where NOME_CLIENTE like ?";
-//        try {
-//            //pasando o conteudo da caixa de pesquisa para o ?
-//            pst = conexao.prepareStatement(sql);
-//            pst.setString(1, txtCliPesquisar.getText() + "%");
-//            rs = pst.executeQuery();
-//            // linha que serve para usar a biblioteca para preencher a tabela.
-//            txtCliTab.setModel(DbUtils.resultSetToTableModel(rs));
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
+    //metodo para pesquisar doadores
+    private void pesquisar_doadores() {
+        String sql = "select ID_DOA as ID, NOME_DOA as NOME, END_DOA as ENDEREÇO,FONE_DOA as TELEFONE,EMAIL_DOA as EMAIL from tbl_doa where NOME_DOA like ?";
+       try {
+            //pasando o conteudo da caixa de pesquisa para o ?
+            pst = conexao.prepareStatement(sql);
+           pst.setString(1, txtCliPesquisar.getText() + "%");
+            rs = pst.executeQuery();
+            // linha que serve para usar a biblioteca para preencher a tabela.
+            txtCliTab.setModel(DbUtils.resultSetToTableModel(rs));
+       } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     //metodo para setar campos do formulario com o conteudo da tabela.
@@ -83,10 +84,9 @@ public class frmCliente extends javax.swing.JInternalFrame {
         // linha abaixo desabilita o botão adicionar
         btnAdicionarCli.setEnabled(false);
     }
-
-    // criando o metodo para alterar dados do cliente
+    // criando o metodo para alterar dados do doador
     private void alterar() {
-        String sql = "update tbl_doa set NOME_CLIENTE=?,END_CLIENTE=?,FONE_CLIENTE=?,EMAIL_CLIENTE=? WHERE ID_CLIENTES=?";
+        String sql = "update tbl_doa set NOME_DOA=?,END_DOA=?,FONE_DOA=?,EMAIL_DOA=? WHERE ID_DOA=?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtCliNome.getText());
@@ -106,7 +106,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
                 //APOIO PARA VERIFICAR MINHA LOGICA
                 //System.out.println("ADICIONADO");
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Dados do cliente alterados com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Dados do doador alterados com sucesso!");
                     limpar();
 
                     txtCliPesquisar.requestFocusInWindow();
@@ -118,19 +118,19 @@ public class frmCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-//metodo responsável pela remoção de clientes
+//metodo responsável pela remoção de doadores
 
     private void remover() {
         //confirmação
-        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este cliente?", "Atenção", JOptionPane.YES_NO_OPTION);
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este doador?", "Atenção", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION) {
-            String sql = "delete from tbl_doa where ID_CLIENTES=?";
+            String sql = "delete from tbl_doa where ID_DOA=?";
             try {
                 pst = conexao.prepareStatement(sql);
                 pst.setString(1, txtCliId.getText());
                 int apagado = pst.executeUpdate();
                 if (apagado > 0) {
-                    JOptionPane.showMessageDialog(null, "Cliente removido com sucesso");
+                    JOptionPane.showMessageDialog(null, "Doador removido com sucesso");
                     limpar();
 
                     txtCliPesquisar.requestFocusInWindow();
@@ -247,7 +247,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
 
         btnPesquisarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-pesquisar-24.png"))); // NOI18N
         btnPesquisarCli.setToolTipText("ADICIONAR NOVO USUARIO");
-        btnPesquisarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPesquisarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPesquisarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarCliActionPerformed(evt);
@@ -267,7 +267,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
 
         btnAdicionarCli.setText("ADICIONAR");
         btnAdicionarCli.setToolTipText("ADICIONAR NOVO CLIENTE");
-        btnAdicionarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdicionarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdicionarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarCliActionPerformed(evt);
@@ -276,7 +276,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
 
         btnExcluirCli.setText("EXCLUIR");
         btnExcluirCli.setToolTipText("EXCLUIR CLIENTE");
-        btnExcluirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCliActionPerformed(evt);
@@ -285,7 +285,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
 
         btnAlterarCli.setText("ALTERAR");
         btnAlterarCli.setToolTipText("ALTERA INFO DO CLIENTE");
-        btnAlterarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarCliActionPerformed(evt);
@@ -349,9 +349,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblSenha)
-                                                .addGap(101, 101, 101))
+                                            .addComponent(lblSenha)
                                             .addComponent(txtCliEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(148, 148, 148)
                                         .addComponent(lblNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,7 +429,7 @@ public class frmCliente extends javax.swing.JInternalFrame {
 
 //GEN-FIRST:event_txtCliPesquisarKeyReleased
  private void txtCliPesquisarKeyReleased (java.awt.event.KeyEvent evt){
-     pesquisar_clientes();
+     pesquisar_doadores();
  }
 //GEN-LAST:event_txtCliPesquisarKeyReleased
 
@@ -441,7 +439,8 @@ public class frmCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCliPesquisarActionPerformed
 
     private void btnPesquisarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCliActionPerformed
-        // TODO add your handling code here:
+        //BOTÃO PARA PESQUISAR
+        pesquisar_doadores();
         
     }//GEN-LAST:event_btnPesquisarCliActionPerformed
 
