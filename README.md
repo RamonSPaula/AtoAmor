@@ -1,0 +1,1 @@
+Projeto em desenvolvimento para a conclusão do curso de Análise e Desenvolvimento de Sistemas, com foco no auxílio ao gerenciamento de estoques de alimentos perecíveis destinados a doações para uma igreja.
