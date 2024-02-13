@@ -34,7 +34,7 @@ public class frmDoadores extends javax.swing.JInternalFrame {
             pst.setString(3, txtCliTel.getText());
             pst.setString(4, txtCliEmail.getText());
 
-            //validação dos campos obrigatorios
+            //validação dos campos obrigatorios.
             if ((((txtCliNome.getText().isEmpty()) || (txtCliEnd.getText().isEmpty()) || (txtCliTel.getText().isEmpty()) || (txtCliEmail.getText().isEmpty())))) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
 
