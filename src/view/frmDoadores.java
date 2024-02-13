@@ -43,7 +43,7 @@ public class frmDoadores extends javax.swing.JInternalFrame {
                 //serve para atualiar tabelas de usuarios com os dados do form
                 //Usada para confirmar a inserção dos dados na tabela
                 int adicionado = pst.executeUpdate();
-                //APOIO PARA VERIFICAR MINHA LOGICA
+                //APOIO PARA VERIFICAR MINHA LOGICA;
                 //System.out.println("ADICIONADO");
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Doador adicionado com sucesso!");
