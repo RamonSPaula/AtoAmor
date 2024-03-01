@@ -1,5 +1,5 @@
 
-package conexxao_BD;
+package br.com.atodeamor.dao;
 import java.sql.*;
 
 public class ModuloConexao {

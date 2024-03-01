@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package br.com.atodeamor.view;
 
 //import classes.Dados;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import java.sql.*;
 
-import conexxao_BD.ModuloConexao;
+import br.com.atodeamor.dao.ModuloConexao;
 
 public class frmLogin extends javax.swing.JFrame {
 
@@ -61,6 +61,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     public frmLogin() {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoAtoDeAmor-removebg-preview.png")).getImage());
         conexao = ModuloConexao.conector();
         //System.out.println(conexao);
         if (conexao != null) {

@@ -1,7 +1,7 @@
 
 package classes;
 
-import view.frmLogin;
+import br.com.atodeamor.view.frmLogin;
 
 
 public class JavaVenda {

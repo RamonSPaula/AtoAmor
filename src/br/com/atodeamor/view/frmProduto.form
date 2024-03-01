@@ -57,35 +57,34 @@
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="txtProUni" min="-2" pref="231" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblNome4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNome7" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNome1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblNome4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNome7" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNome1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="lblNome2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="lblNome2" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblNome5" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtProAli" min="-2" pref="231" max="-2" attributes="0"/>
-                              <Component id="txtProCod" min="-2" pref="231" max="-2" attributes="0"/>
-                              <Component id="txtProVali" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
-                              <Component id="txtProQua" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
-                              <Component id="txtProDoa" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
+                          <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtProAli" pref="231" max="32767" attributes="0"/>
+                              <Component id="txtProCod" pref="231" max="32767" attributes="0"/>
+                              <Component id="txtProQua" alignment="0" pref="231" max="32767" attributes="0"/>
+                              <Component id="txtProDoa" alignment="0" pref="231" max="32767" attributes="0"/>
+                              <Component id="txtProVali" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtProDat" max="32767" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblNome5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="txtProDat" min="-2" pref="231" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -120,8 +119,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtProVali" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNome2" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="txtProVali" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
@@ -131,11 +130,16 @@
                   <Component id="lblNome3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtProDat" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNome5" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblNome5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="txtProDat" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtProQua" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNome7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -197,8 +201,6 @@
         <Property name="text" type="java.lang.String" value="Validade:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtProVali">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblNome3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -249,7 +251,7 @@
         <Property name="text" type="java.lang.String" value="ADICIONAR"/>
         <Property name="toolTipText" type="java.lang.String" value="ADICIONAR NOVO CADASTRO"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
@@ -261,7 +263,7 @@
         <Property name="text" type="java.lang.String" value="ALTERAR"/>
         <Property name="toolTipText" type="java.lang.String" value="ALTERAR PRODUTO"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
@@ -273,14 +275,12 @@
         <Property name="text" type="java.lang.String" value="EXCLUIR"/>
         <Property name="toolTipText" type="java.lang.String" value="EXCLUIR PRODUTO"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirCliActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtProDat">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -319,7 +319,7 @@
         <Property name="text" type="java.lang.String" value="ADICIONAR"/>
         <Property name="toolTipText" type="java.lang.String" value="ADICIONAR NOVO CLIENTE"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
@@ -331,7 +331,7 @@
         <Property name="text" type="java.lang.String" value="EXCLUIR"/>
         <Property name="toolTipText" type="java.lang.String" value="EXCLUIR CLIENTE"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
@@ -343,12 +343,26 @@
         <Property name="text" type="java.lang.String" value="ALTERAR"/>
         <Property name="toolTipText" type="java.lang.String" value="ALTERA INFO DO CLIENTE"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarCli1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtProVali">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##/##/####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtProDat">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##/##/####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

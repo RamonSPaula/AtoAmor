@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package view;
+package br.com.atodeamor.view;
 
 /**
  *
  * @author Ramon Santos
  */
 import java.sql.*;
-import conexxao_BD.ModuloConexao;
+import br.com.atodeamor.dao.ModuloConexao;
 import javax.swing.JOptionPane;
 
 public class frmUsuarios extends javax.swing.JInternalFrame {

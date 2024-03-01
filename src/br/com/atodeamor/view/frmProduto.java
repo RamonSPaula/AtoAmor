@@ -2,15 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package view;
+package br.com.atodeamor.view;
 
 /**
  *
  * @author Ramon Santos
  */
 import java.sql.*;
-import conexxao_BD.ModuloConexao;
+import br.com.atodeamor.dao.ModuloConexao;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import java.util.Date;
+
+// ...
+
 
 public class frmProduto extends javax.swing.JInternalFrame {
 
@@ -25,41 +30,74 @@ public class frmProduto extends javax.swing.JInternalFrame {
     }
     
  //metodo para adicionar produtos
-    private void adicionar() {
-//        String sql = "insert into tbl_produtos (COD_PRODUTO, ALIMENTO, VALID_PROD,UNI_MEDIDA,DATA_ENTRADA,QUANT_PROD,DOADOR) values(?,?,?,?,?,?,?)";
-//        try {
-//            pst = conexao.prepareStatement(sql);
-//            pst.setString(1, txtProCod.getText());
-//            pst.setString(2, txtUserLogin.getText());
-//            pst.setString(3, txtUserNome.getText());
-//            pst.setString(4, txtUserSenha.getText());
-//            pst.setString(5, txtUserPerfil.getSelectedItem().toString());
-//            //validação dos campos obrigatorios
-//            if ((((txtUserId.getText().isEmpty()) ||(txtUserNome.getText().isEmpty()) ||(txtUserLogin.getText().isEmpty()) ||(txtUserSenha.getText().isEmpty())))) {
-//                JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
-//                
-//            } else {
-//
-//                //serve para atualiar tabelas de usuarios com os dados do form
-//                //Usada para confirmar a inserção dos dados na tabela
-//                int adicionado = pst.executeUpdate();
-//                //APOIO PARA VERIFICAR MINHA LOGICA
-//                //System.out.println("ADICIONADO");
-//                if (adicionado > 0) {
-//                    JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!");
-//                    txtUserId.setText(null);
-//                    txtUserNome.setText(null);
-//                    txtUserLogin.setText(null);
-//                    txtUserSenha.setText(null);
-//                    txtUserPerfil.setSelectedItem(null);
-//                    txtUserId.requestFocusInWindow();
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
+private void adicionar() {
+    String sql = "insert into tbl_produtos (COD_PRODUTO, ALIMENTO, VALID_PROD, UNI_MEDIDA, DATA_ENTRADA, QUANT_PROD, DOADOR) values(?,?,?,?,?,?,?)";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setString(1, txtProCod.getText());
+        pst.setString(2, txtProAli.getText());
+
+        // Formatando a data de validade
+        String dataValidadeFormatada = formatarData(txtProVali.getText());
+        pst.setString(3, dataValidadeFormatada);
+
+        pst.setString(4, txtProUni.getText());
+
+        // Formatando a data de entrada
+        String dataEntradaFormatada = formatarData(txtProDat.getText());
+        pst.setString(5, dataEntradaFormatada);
+
+        pst.setString(6, txtProQua.getText());
+        pst.setString(7, txtProDoa.getText());
+
+        // validação dos campos obrigatórios
+        if (txtProCod.getText().isEmpty() || txtProAli.getText().isEmpty() || txtProVali.getText().isEmpty()
+                || txtProUni.getText().isEmpty() || txtProDat.getText().isEmpty() || txtProQua.getText().isEmpty()
+                || txtProDoa.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
+        } else {
+            // serve para atualizar tabelas de usuários com os dados do form
+            // Usada para confirmar a inserção dos dados na tabela
+            int adicionado = pst.executeUpdate();
+            // APOIO PARA VERIFICAR MINHA LÓGICA
+            System.out.println("ADICIONADO");
+            if (adicionado > 0) {
+                JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!");
+                limparCampos();
+                txtProCod.requestFocusInWindow();
+            }
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
     }
+}
+
+// Função para formatar a data
+private String formatarData(String data) {
+    try {
+        SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoSaida = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date dataFormatada = formatoEntrada.parse(data);
+        return formatoSaida.format(dataFormatada);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao formatar data: " + e.getMessage());
+        return null;
+    }
+}
+
+// Função para limpar os campos após a inserção
+private void limparCampos() {
+    txtProCod.setText(null);
+    txtProAli.setText(null);
+    txtProVali.setText(null);
+    txtProUni.setText(null);
+    txtProDat.setText(null);
+    txtProQua.setText(null);
+    txtProDoa.setText(null);
+}
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,7 +107,6 @@ public class frmProduto extends javax.swing.JInternalFrame {
         lblNome1 = new javax.swing.JLabel();
         txtProCod = new javax.swing.JTextField();
         lblNome2 = new javax.swing.JLabel();
-        txtProVali = new javax.swing.JTextField();
         lblNome3 = new javax.swing.JLabel();
         txtProUni = new javax.swing.JTextField();
         lblNome4 = new javax.swing.JLabel();
@@ -81,12 +118,13 @@ public class frmProduto extends javax.swing.JInternalFrame {
         btnAdicionarCli = new javax.swing.JButton();
         btnAlterarCli = new javax.swing.JButton();
         btnExcluirCli = new javax.swing.JButton();
-        txtProDat = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCliTab = new javax.swing.JTable();
         btnAdicionarCli1 = new javax.swing.JButton();
         btnExcluirCli1 = new javax.swing.JButton();
         btnAlterarCli1 = new javax.swing.JButton();
+        txtProVali = new javax.swing.JFormattedTextField();
+        txtProDat = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -120,7 +158,7 @@ public class frmProduto extends javax.swing.JInternalFrame {
 
         btnAdicionarCli.setText("ADICIONAR");
         btnAdicionarCli.setToolTipText("ADICIONAR NOVO CADASTRO");
-        btnAdicionarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdicionarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdicionarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarCliActionPerformed(evt);
@@ -129,7 +167,7 @@ public class frmProduto extends javax.swing.JInternalFrame {
 
         btnAlterarCli.setText("ALTERAR");
         btnAlterarCli.setToolTipText("ALTERAR PRODUTO");
-        btnAlterarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarCliActionPerformed(evt);
@@ -138,7 +176,7 @@ public class frmProduto extends javax.swing.JInternalFrame {
 
         btnExcluirCli.setText("EXCLUIR");
         btnExcluirCli.setToolTipText("EXCLUIR PRODUTO");
-        btnExcluirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCliActionPerformed(evt);
@@ -172,7 +210,7 @@ public class frmProduto extends javax.swing.JInternalFrame {
 
         btnAdicionarCli1.setText("ADICIONAR");
         btnAdicionarCli1.setToolTipText("ADICIONAR NOVO CLIENTE");
-        btnAdicionarCli1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdicionarCli1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdicionarCli1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarCli1ActionPerformed(evt);
@@ -181,7 +219,7 @@ public class frmProduto extends javax.swing.JInternalFrame {
 
         btnExcluirCli1.setText("EXCLUIR");
         btnExcluirCli1.setToolTipText("EXCLUIR CLIENTE");
-        btnExcluirCli1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluirCli1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExcluirCli1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCli1ActionPerformed(evt);
@@ -190,12 +228,24 @@ public class frmProduto extends javax.swing.JInternalFrame {
 
         btnAlterarCli1.setText("ALTERAR");
         btnAlterarCli1.setToolTipText("ALTERA INFO DO CLIENTE");
-        btnAlterarCli1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAlterarCli1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterarCli1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarCli1ActionPerformed(evt);
             }
         });
+
+        try {
+            txtProVali.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txtProDat.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,27 +273,26 @@ public class frmProduto extends javax.swing.JInternalFrame {
                             .addComponent(txtProUni, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(227, 227, 227)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblNome4)
-                                        .addComponent(lblNome)
-                                        .addComponent(lblNome7)
-                                        .addComponent(lblNome1)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(192, 192, 192)
-                                    .addComponent(lblNome2)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(227, 227, 227)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblNome4)
+                                            .addComponent(lblNome)
+                                            .addComponent(lblNome7)
+                                            .addComponent(lblNome1)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(192, 192, 192)
+                                        .addComponent(lblNome2)))
+                                .addComponent(lblNome5, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGap(38, 38, 38)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtProAli, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtProCod, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtProVali, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtProQua, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtProDoa, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblNome5)
-                            .addGap(38, 38, 38)
-                            .addComponent(txtProDat, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtProAli, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                .addComponent(txtProCod, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                .addComponent(txtProQua, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                .addComponent(txtProDoa, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                .addComponent(txtProVali)
+                                .addComponent(txtProDat))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(333, 333, 333)
                         .addComponent(btnAdicionarCli1)
@@ -269,17 +318,20 @@ public class frmProduto extends javax.swing.JInternalFrame {
                         .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtProVali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProVali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProUni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNome3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtProDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNome5))
-                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNome5)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtProDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProQua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNome7))
@@ -363,10 +415,12 @@ public class frmProduto extends javax.swing.JInternalFrame {
     private javax.swing.JTable txtCliTab;
     private javax.swing.JTextField txtProAli;
     private javax.swing.JTextField txtProCod;
-    private javax.swing.JTextField txtProDat;
+    private javax.swing.JFormattedTextField txtProDat;
     private javax.swing.JTextField txtProDoa;
     private javax.swing.JTextField txtProQua;
     private javax.swing.JTextField txtProUni;
-    private javax.swing.JTextField txtProVali;
+    private javax.swing.JFormattedTextField txtProVali;
     // End of variables declaration//GEN-END:variables
+
+   
 }

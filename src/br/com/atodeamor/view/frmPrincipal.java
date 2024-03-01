@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package br.com.atodeamor.view;
 
 import java.awt.Component;
 import java.beans.PropertyVetoException;
@@ -161,7 +161,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuMovimentos.add(mnuMovimentosVendas);
 
         mnuMovimentosCad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/application_form.png"))); // NOI18N
-        mnuMovimentosCad.setText("Cadastros");
+        mnuMovimentosCad.setText("Registros");
 
         mnuMovimentosCadProd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
         mnuMovimentosCadProd.setText("Produtos");
