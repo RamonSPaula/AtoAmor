@@ -1,5 +1,5 @@
 
-package classes;
+package br.com.atodeamor.model;
 
 
 public class Dados {

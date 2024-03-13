@@ -5,7 +5,7 @@
 package br.com.atodeamor.view;
 
 import java.sql.*;
-import br.com.atodeamor.dao.ModuloConexao;
+import br.com.atodeamor.jdbc.ModuloConexao;
 import javax.swing.JOptionPane;
 //import net.proteanit.sql.DbUtils;
 

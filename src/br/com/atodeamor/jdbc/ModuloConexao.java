@@ -1,5 +1,5 @@
 
-package br.com.atodeamor.dao;
+package br.com.atodeamor.jdbc;
 import java.sql.*;
 
 public class ModuloConexao {
@@ -18,8 +18,8 @@ public class ModuloConexao {
             conexao = DriverManager.getConnection(url, user, password);
             return conexao;
             
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception erro) {
+            System.out.println(erro);
             return null;
         }
     }

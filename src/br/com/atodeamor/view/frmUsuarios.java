@@ -9,7 +9,7 @@ package br.com.atodeamor.view;
  * @author Ramon Santos
  */
 import java.sql.*;
-import br.com.atodeamor.dao.ModuloConexao;
+import br.com.atodeamor.jdbc.ModuloConexao;
 import javax.swing.JOptionPane;
 
 public class frmUsuarios extends javax.swing.JInternalFrame {

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import java.sql.*;
 
-import br.com.atodeamor.dao.ModuloConexao;
+import br.com.atodeamor.jdbc.ModuloConexao;
 
 public class frmLogin extends javax.swing.JFrame {
 
@@ -169,7 +169,7 @@ public class frmLogin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jLabel3)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +195,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 419, 452);
+        setBounds(0, 0, 367, 452);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -280,10 +280,8 @@ if(evt.getKeyCode() == evt.VK_ENTER){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmLogin().setVisible(true);
         });
     }
 

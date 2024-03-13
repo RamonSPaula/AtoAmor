@@ -9,7 +9,7 @@ package br.com.atodeamor.view;
  * @author Ramon Santos
  */
 import java.sql.*;
-import br.com.atodeamor.dao.ModuloConexao;
+import br.com.atodeamor.jdbc.ModuloConexao;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.util.Date;

@@ -1,7 +1,8 @@
 
-package classes;
+package br.com.atodeamor.model;
 
 import br.com.atodeamor.view.frmLogin;
+
 
 
 public class JavaVenda {
